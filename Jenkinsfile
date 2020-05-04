@@ -8,12 +8,12 @@ pipeline {
         stage('clone repository') {
             steps {
                 deleteDir()
-                git branch: 'master', credentialsId: 'gitlab_new', url: 'https://github.com/SomnambulaDreams/my-first-at.git'
+                git branch: 'master', credentialsId: 'gitlab_new', url: 'https://github.com/SomnambulaDreams/selenoid-autotests.git'
             }
         }
         stage('run tests') {
             steps {
-                sh "mvn test -Dselenide.browser=chrome -Dselenide.remote=http://172.17.0.1:4444/wd/hub"
+                sh "mvn test -Dselenide.browser=chrome -Dselenide.remote=http://192.168.69.51:4444/wd/hub"
             }
         }
         stage('generate allure report') {
